@@ -98,7 +98,7 @@ Node.prototype.calcView = function(n){
     n.calcView(n.left);
   }
 
-  //Continue on right side if possible
+  //Continue on left side if possible
   if(n.right != null){
     n.calcView(n.right);
   }

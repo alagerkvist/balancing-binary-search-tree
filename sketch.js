@@ -26,7 +26,6 @@ function treeToVine(root){
 }
 
 function compress(root, count){
-  console.log(root);
   let scanner = root;
   for(let i = 1; i <= count; i++){
     let child = scanner.right;
@@ -88,5 +87,11 @@ function setup() {
   tree.root.calcView(tree.root.right);
   tree.traverse();
   console.log(tree);
+  let result = tree.search(42);
+  if (result == null) {
+    console.log('not found');
+  } else {
+    console.log(result);
+  }
 
 }
