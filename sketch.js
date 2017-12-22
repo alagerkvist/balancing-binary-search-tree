@@ -10,8 +10,8 @@
 function treeToVine(root){
   let tail = root;
   let rest = tail.right;
-  while(rest != null){
-    if(rest.left == null){
+  while(rest != null || rest != undefined){
+    if(rest.left == null || rest.left == undefined){
       tail = rest;
       rest = rest.right;
     }else{
@@ -25,17 +25,8 @@ function treeToVine(root){
   }
 }
 
-function vineToTree(root, len){
-  let leaves = len + 1 - Math.pow(2, Math.log2(len+1));
-  compress(root, leaves);
-  len = len - leaves;
-  while (len > 1){
-    compress(root, len/2);
-    len = len / 2;
-  }
-}
-
 function compress(root, count){
+  console.log(root);
   let scanner = root;
   for(let i = 1; i <= count; i++){
     let child = scanner.right;
@@ -46,6 +37,18 @@ function compress(root, count){
   }
 }
 
+function vineToTree(root, len){
+  let leaves = floor(len + 1 - Math.pow(2, Math.log2(len+1)));
+  compress(root, leaves);
+  len = len - leaves;
+  while (len > 1){
+    compress(root, floor(len/2));
+    len = floor(len / 2);
+  }
+}
+
+
+
 // Binary tree
 let tree;
 
@@ -55,11 +58,22 @@ function setup() {
   //How many nodes it should be
   let nodes = 15;
 
+  //Create a array so the values are going to be unique
+  let r = [];
   // New tree
   tree = new Tree();
 
+  //Add numbers 0 - 99
+  for(let i = 0; i < 100; i++){
+    r.push(i);
+  }
+
   for (let i = 0; i < nodes; i++) {
-    tree.addValue(floor(random(0, 100)));
+    //Pick a random number from the array
+    let val = random(r);
+    tree.addValue(val);
+    //Remove the value is it won't be picked again
+    r.splice(r.indexOf(val), 1);
   }
 
   background(0);
