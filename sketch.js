@@ -50,12 +50,13 @@ function vineToTree(root, len){
 
 // Binary tree
 let tree;
+let nodes = 15;
+
 
 
 function setup() {
   createCanvas(800, 600);
   //How many nodes it should be
-  let nodes = 15;
 
   //Create a array so the values are going to be unique
   let r = [];
@@ -77,10 +78,10 @@ function setup() {
 
   background(0);
 
-  let psedoroot = new Node(0,0,0,tree.root);
-  treeToVine(psedoroot);
-  vineToTree(psedoroot, nodes);
-  tree.root = psedoroot.right;
+  //let psedoroot = new Node(0,0,0,tree.root);
+  //treeToVine(psedoroot);
+  //vineToTree(psedoroot, nodes);
+  //tree.root = psedoroot.right;
   tree.root.x = width / 2;
   tree.root.y = 16;
   tree.root.calcView(tree.root.left);
@@ -94,4 +95,20 @@ function setup() {
     console.log(result);
   }
 
+}
+
+function mousePressed(){
+  background(0);
+  tree.reset(tree.root);
+
+  let psedoroot = new Node(0,0,0,tree.root);
+  treeToVine(psedoroot);
+  vineToTree(psedoroot, nodes);
+  tree.root = psedoroot.right;
+  tree.root.x = width / 2;
+  tree.root.y = 16;
+  tree.root.calcView(tree.root.left);
+  tree.root.calcView(tree.root.right);
+  tree.traverse();
+  console.log(tree);
 }

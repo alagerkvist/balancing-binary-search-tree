@@ -3,11 +3,11 @@
 // https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
 // Node in the tree
 
-function Node(n){
+function Node(n) {
   this.right = n;
 }
 
-function Node(val, x, y, n=null) {
+function Node(val, x, y, n = null) {
   this.value = val;
   this.left = null;
   this.right = n;
@@ -64,7 +64,7 @@ Node.prototype.addNode = function(n) {
     // Is there nothing there? Place the node
     if (this.left == null) {
       this.left = n;
-    // Keep going!
+      // Keep going!
     } else {
       this.left.addNode(n)
     }
@@ -73,34 +73,36 @@ Node.prototype.addNode = function(n) {
     // Is there nothing there? Place the node
     if (this.right == null) {
       this.right = n;
-    // Keep going!
+      // Keep going!
     } else {
       this.right.addNode(n);
     }
   }
 }
 
-Node.prototype.calcView = function(n){
-  //Check the value should be on the left or right side
-  if(this.value > n.value){
-    // Exponentially shrink the distance between nodes for each level
-    n.distance = this.distance +1;
-    n.x = this.x - (width / pow(2, n.distance))-10;
-    n.y = this.y + (height / 12);
-  }else{
-    n.distance = this.distance +1;
-    n.x = this.x + (width / pow(2, n.distance)) +10;
-    n.y = this.y + (height / 12);
-  }
+Node.prototype.calcView = function(n) {
+  if (n != null && n != undefined) {
+    //Check the value should be on the left or right side
+    if (this.value > n.value) {
+      // Exponentially shrink the distance between nodes for each level
+      n.distance = this.distance + 1;
+      n.x = this.x - (width / pow(2, n.distance)) - 10;
+      n.y = this.y + (height / 12);
+    } else {
+      n.distance = this.distance + 1;
+      n.x = this.x + (width / pow(2, n.distance)) + 10;
+      n.y = this.y + (height / 12);
+    }
 
-  //Continue on left side if possible
-  if(n.left != null){
-    n.calcView(n.left);
-  }
+    //Continue on left side if possible
+    if (n.left != null) {
+      n.calcView(n.left);
+    }
 
-  //Continue on left side if possible
-  if(n.right != null){
-    n.calcView(n.right);
+    //Continue on left side if possible
+    if (n.right != null) {
+      n.calcView(n.right);
+    }
   }
 
 }

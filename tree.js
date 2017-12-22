@@ -8,6 +8,17 @@ function Tree() {
   this.root = null;
 }
 
+Tree.prototype.reset = function(node){
+  node.distance = 2;
+  if(node.left != null){
+    this.reset(node.left);
+  }
+
+  if(node.right != null){
+    this.reset(node.right);
+  }
+}
+
 // Start by visiting the root
 Tree.prototype.traverse = function() {
   this.root.visit(this.root);
