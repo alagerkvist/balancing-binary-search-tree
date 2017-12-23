@@ -37,7 +37,7 @@ function compress(root, count){
 }
 
 function vineToTree(root, len){
-  let leaves = floor(len + 1 - Math.pow(2, Math.log2(len+1)));
+  let leaves = len + 1 - floor(Math.pow(2, Math.log2(len+1)));
   compress(root, leaves);
   len = len - leaves;
   while (len > 1){
@@ -50,7 +50,7 @@ function vineToTree(root, len){
 
 // Binary tree
 let tree;
-let nodes = 15;
+let nodes = 5;
 
 
 
@@ -78,10 +78,6 @@ function setup() {
 
   background(0);
 
-  //let psedoroot = new Node(0,0,0,tree.root);
-  //treeToVine(psedoroot);
-  //vineToTree(psedoroot, nodes);
-  //tree.root = psedoroot.right;
   tree.root.x = width / 2;
   tree.root.y = 16;
   tree.root.calcView(tree.root.left);

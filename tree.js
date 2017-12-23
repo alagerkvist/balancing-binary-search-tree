@@ -3,6 +3,9 @@
 // https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
 
 // Tree object
+//BST - https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
+// Anders Lagerkvist
+
 function Tree() {
   // Just store the root
   this.root = null;

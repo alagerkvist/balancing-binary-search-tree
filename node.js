@@ -3,6 +3,9 @@
 // https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
 // Node in the tree
 
+//BST - https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
+// Anders Lagerkvist
+
 function Node(n) {
   this.right = n;
 }
